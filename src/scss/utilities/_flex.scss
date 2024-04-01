@@ -1,0 +1,43 @@
+@use "./mixins" as m;
+
+//  justify-content
+$valuesForJustify: start, end, center, stretch, between, around, evenly;
+
+@each $value in $valuesForJustify {
+  .justify-#{$value} {
+    @if ($value == start) or ($value == end) {
+      justify-content: flex-#{$value};
+    } @else if ($value == between) or ($value == around) or ($value == evenly) {
+      justify-content: space-#{$value};
+    } @else {
+      justify-content: $value;
+    }
+  }
+}
+
+//  align-items
+$valuesForAlignItem: start, end, center, stretch;
+
+@each $value in $valuesForAlignItem {
+  .items-#{$value} {
+    @if ($value == start) or ($value == end) {
+      align-items: flex-#{$value};
+    } @else {
+      align-items: $value;
+    }
+  }
+}
+
+// add
+.flex-center {
+  // Підключення міксинів далі
+  @include m.flex-center();
+}
+
+.flex-center-column {
+  @include m.flex-center(column);
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

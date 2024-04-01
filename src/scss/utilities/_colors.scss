@@ -1,0 +1,38 @@
+@use "variables" as *;
+
+// list colors
+$colors: (
+  "primary": $primary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "gray": $gray,
+  "bg-secondary-1": $bg-secondary-1,
+  "bg-secondary-2": $bg-secondary-2,
+  "text-primary-1": $text-primary-1,
+  "text-primary-2": $text-primary-2,
+  "white": $white,
+  "black": $black,
+);
+
+@each $name, $color in $colors {
+  // text color
+  .color-#{$name} {
+    color: $color;
+  }
+
+  // background color
+  .bg-#{$name} {
+    background-color: $color;
+  }
+
+  // fill for `svg`
+  .fill-#{$name} {
+    svg {
+      color: $color;
+    }
+  }
+}
